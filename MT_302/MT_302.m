@@ -32,7 +32,7 @@ X1 = (n_ac-n_acid_reacted_r1)/(n_ac)
 
 V_W_naoh = [0,9,7.1,6.1,5.1,4.1,4.4,2.4,1.5];
 V_W = 5 % ml
-acid_lost = (((1.*V_W_naoh)/V_W).*water_lost) % in millimoles
+acid_lost = ((1.*V_W_naoh)) % in millimoles
 total_acid_lost=sum(acid_lost)
 
 %For reactor 2:
