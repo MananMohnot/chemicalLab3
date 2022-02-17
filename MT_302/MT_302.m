@@ -26,13 +26,13 @@ cum_water_rem_r1 = zeros(1,length(water_lost));
 for i=2:9
     cum_water_rem_r1(i) = water_lost(i)+cum_water_rem_r1(i-1);
 end
-vol_in_r1 = 550-cum_sample-cum_water_rem_r1;
+vol_in_r1 = 550-cum_sample-cum_water_rem_r1
 n_acid_reacted_r1 = (vol_in_r1.*conc_acid_r1)/1000;
-X1 = (n_ac-n_acid_reacted_r1)/(n_ac)
+X1 = (n_ac-n_acid_reacted_r1)/(n_ac);
 
 V_W_naoh = [0,9,7.1,6.1,5.1,4.1,4.4,2.4,1.5];
-V_W = 5 % ml
-acid_lost = ((1.*V_W_naoh)) % in millimoles
+V_W = 5; % ml
+acid_lost = ((1.*V_W_naoh)/V_W).*water_lost % in millimoles
 total_acid_lost=sum(acid_lost)
 
 %For reactor 2:
@@ -101,8 +101,8 @@ hold off
 % Writing to Excel
 
 filename='MT_302.xlsx';
-T=table(t',T_r1',water_lost',V_naoh_r1',vol_in_r1',X1');
-T.Properties.VariableNames = {'Time','Temperature','Water Lost','NaOH required','Volume remaining','Conversion (X1)'}
+T=table(t',T_r1',water_lost',acid_lost',V_naoh_r1',vol_in_r1',X1');
+T.Properties.VariableNames = {'Time','Temperature','Water Lost','Acid Lost','NaOH required','Volume remaining','Conversion (X1)'}
 
 writetable(T,filename,'Sheet','reactor 1')
 
